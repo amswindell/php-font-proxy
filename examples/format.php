@@ -5,22 +5,22 @@ require_once '../source/fonttypes.php';
 
 $proxy = new FontProxy();
 
-$proxy->addFontTypes('Myriad Pro - Normal', array(
-	FontTypes::OTF => '../fonts/MyriadPro-Semibold.otf',
-	FontTypes::EOT => '../fonts/MyriadPro-Semibold.eot',
-	FontTypes::TTF => '../fonts/MyriadPro-Semibold.ttf'
-))->addFontTypes('Myriad Pro - Bold', array(
-	FontTypes::OTF => '../fonts/MyriadPro-Bold.otf',
-	FontTypes::EOT => '../fonts/MyriadPro-Bold.eot',
-	FontTypes::TTF => '../fonts/MyriadPro-Bold.ttf'
-))->addFontTypes('Myriad Pro - Italic', array(
-	FontTypes::OTF => '../fonts/MyriadPro-SemiboldIt.otf',
-	FontTypes::EOT => '../fonts/MyriadPro-SemiboldIt.eot',
-	FontTypes::TTF => '../fonts/MyriadPro-SemiboldIt.ttf'
-))->addFontTypes('Myriad Pro - Bold Italic', array(
-	FontTypes::OTF => '../fonts/MyriadPro-BoldIt.otf',
-	FontTypes::EOT => '../fonts/MyriadPro-BoldIt.eot',
-	FontTypes::TTF => '../fonts/MyriadPro-BoldIt.ttf'
+$proxy->addFontTypes('LuxiSans-Regular', array(
+	FontTypes::OTF => '../fonts/LuxiSans-Regular.otf',
+	FontTypes::EOT => '../fonts/LuxiSans-Regular.eot',
+	FontTypes::TTF => '../fonts/LuxiSans-Regular.ttf'
+))->addFontTypes('LuxiSans-Bold', array(
+	FontTypes::OTF => '../fonts/LuxiSans-Bold.otf',
+	FontTypes::EOT => '../fonts/LuxiSans-Bold.eot',
+	FontTypes::TTF => '../fonts/LuxiSans-Bold.ttf'
+))->addFontTypes('LuxiSans-Oblique', array(
+	FontTypes::OTF => '../fonts/LuxiSans-Oblique.otf',
+	FontTypes::EOT => '../fonts/LuxiSans-Oblique.eot',
+	FontTypes::TTF => '../fonts/LuxiSans-Oblique.ttf'
+))->addFontTypes('LuxiSans-BoldOblique', array(
+	FontTypes::OTF => '../fonts/LuxiSans-BoldOblique.otf',
+	FontTypes::EOT => '../fonts/LuxiSans-BoldOblique.eot',
+	FontTypes::TTF => '../fonts/LuxiSans-BoldOblique.ttf'
 ));
 
 $declarations = '';
@@ -31,7 +31,7 @@ if (sizeof($fonts) > 0)
 {
 	foreach ($fonts as $font)
 	{
-		$extra = ' - Normal';
+		$extra = '-Regular';
 		$weight = '';
 		$style = '';
 		$font = explode(':', $font);
@@ -43,18 +43,20 @@ if (sizeof($fonts) > 0)
 				case 'b':
 				case 'bold':
 					$weight = 'bold';
-					$extra = ' - Bold';
+					$extra = '-Bold';
 					break;
 				case 'i':
 				case 'italic':
+				case 'o':
+				case 'oblique':
 					$style = 'oblique';
-					$extra = ' - Italic';
+					$extra = '-Oblique';
 					break;
 				case 'bi':
 				case 'bold italic':
 					$weight = 'bold';
 					$style = 'oblique';
-					$extra = ' - Bold Italic';
+					$extra = '-BoldOblique';
 					break;
 			}
 		}
@@ -89,6 +91,9 @@ if (sizeof($fonts) > 0)
 		}
 	}
 }
+
+// Thanks mennovanslooten!
+header('Content-type: text/css');
 
 if ($declarations)
 {

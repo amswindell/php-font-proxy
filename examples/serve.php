@@ -5,33 +5,33 @@ require_once '../source/fonttypes.php';
 
 $proxy = new FontProxy();
 
-$proxy->addFont('Myriad Pro - Normal', FontTypes::OTF, '../fonts/MyriadPro-Semibold.otf');
-$proxy->addFont('Myriad Pro - Bold', FontTypes::OTF, '../fonts/MyriadPro-bold.otf');
-$proxy->addFont('Myriad Pro - Italic', FontTypes::OTF, '../fonts/MyriadPro-SemiboldIt.otf');
+$proxy->addFont('LuxiSans-Regular', FontTypes::OTF, '../fonts/LuxiSans-Regular.otf');
+$proxy->addFont('LuxiSans-Bold', FontTypes::OTF, '../fonts/LuxiSans-Bold.otf');
+$proxy->addFont('LuxiSans-BoldOblique', FontTypes::OTF, '../fonts/LuxiSans-BoldOblique.otf');
 
-$proxy->addFont('Myriad Pro - Normal', FontTypes::EOT, '../fonts/MyriadPro-Semibold.eot');
-$proxy->addFont('Myriad Pro - Bold', FontTypes::EOT, '../fonts/MyriadPro-bold.eot');
-$proxy->addFont('Myriad Pro - Italic', FontTypes::EOT, '../fonts/MyriadPro-SemiboldIt.eot');
+$proxy->addFont('LuxiSans-Regular', FontTypes::EOT, '../fonts/LuxiSans-Regular.eot');
+$proxy->addFont('LuxiSans-Bold', FontTypes::EOT, '../fonts/LuxiSans-Bold.eot');
+$proxy->addFont('LuxiSans-BoldOblique', FontTypes::EOT, '../fonts/LuxiSans-BoldOblique.eot');
 
-$proxy->addFontTypes('Myriad Pro - Bold Italic', array(
-	FontTypes::OTF => '../fonts/MyriadPro-BoldIt.otf',
-	FontTypes::EOT => '../fonts/MyriadPro-BoldIt.eot'
+$proxy->addFontTypes('LuxiSans - Bold Italic', array(
+	FontTypes::OTF => '../fonts/LuxiSans-BoldIt.otf',
+	FontTypes::EOT => '../fonts/LuxiSans-BoldIt.eot'
 ));
 
 $proxy->addTypeFonts(FontTypes::TTF, array(
-	'Myriad Pro Semibold - Normal' => '../fonts/MyriadPro-Semibold.ttf',
-	'Myriad Pro Semibold - Bold' => '../fonts/MyriadPro-bold.ttf',
-	'Myriad Pro Semibold - Italic' => '../fonts/MyriadPro-SemiboldIt.ttf',
-	'Myriad Pro Semibold - Bold Italic' => '../fonts/MyriadPro-BoldIt.ttf'
+	'LuxiSans-Regular' => '../fonts/LuxiSans-Regular.ttf',
+	'LuxiSans-Bold' => '../fonts/LuxiSans-Bold.ttf',
+	'LuxiSans-Oblique' => '../fonts/LuxiSans-Oblique.ttf',
+	'LuxiSans-BoldOblique' => '../fonts/LuxiSans-BoldOblique.ttf'
 ));
 
 print_r($proxy);
 
-$font = $proxy->getFont('Myriad Pro - Normal', FontTypes::OTF);
+$font = $proxy->getFont('BoldOblique-Regular', FontTypes::OTF);
 print_r($font);
 
 $support = $proxy->detectSupport($_SERVER['HTTP_USER_AGENT']);
 print_r($support);
 
-$serve = $proxy->serve('Myriad Pro - Bold Italic', $_SERVER['HTTP_USER_AGENT']);
+$serve = $proxy->serve('BoldOblique-BoldOblique', $_SERVER['HTTP_USER_AGENT']);
 print_r($serve);
