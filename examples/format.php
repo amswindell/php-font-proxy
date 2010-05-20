@@ -92,7 +92,7 @@ if (sizeof($fonts) > 0)
 	}
 }
 
-// Thanks mennovanslooten!
+// Menno van Slooten (http://mennovanslooten.nl)
 header('Content-type: text/css');
 
 if ($declarations)
